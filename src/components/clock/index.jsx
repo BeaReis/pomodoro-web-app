@@ -1,17 +1,34 @@
-import { ClockContainer, ClockFrame } from "./style";
+import {
+  ClockContainer,
+  ClockFrame,
+  InnerContainer,
+  PauseButton,
+  PlayButton,
+  TimeFrame,
+  Button,
+  Title,
+  TimerWrapper,
+} from "./style";
 
 function Clock() {
-    return (
-        <>
-        <ClockContainer>
-            <ClockFrame>
-
-            </ClockFrame>
-        </ClockContainer>
-        </>
-
-    )
+  return (
+    <>
+      <ClockContainer>
+        <ClockFrame>
+            <Title>Title</Title>
+            <TimeFrame>25:00</TimeFrame>
+          <InnerContainer play>
+            <PauseButton />
+            <PlayButton />
+          </InnerContainer>
+          <InnerContainer>
+          <Button setup/>
+          <Button />
+          </InnerContainer>
+        </ClockFrame>
+      </ClockContainer>
+    </>
+  );
 }
 
-
-export default Clock;   
+export default Clock;
