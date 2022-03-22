@@ -1,0 +1,29 @@
+/******** SETUP STEP BY STEP DOCUMENTATION ********/
+
+1. Setup nextJS -> npm i next react react-dom
+
+2. Add scripts for nextJS -> 
+    "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+    }
+
+    Obs:
+    dev - Runs next dev which starts Next.js in development mode
+    build - Runs next build which builds the application for production usage
+    start - Runs next start which starts a Next.js production server
+    lint - Runs next lint which sets up Next.js' built-in ESLint configuration
+
+
+3. Create files './Pages/' for routes and './Public/' for static files serving
+
+4. Setup styled components -> npm i styled-components
+
+5. Setup babel plugin -> npm i --save-dev babel-plugin-styled-components
+
+6. Add .babelrc ->
+    {
+        "plugins": ["babel-plugin-styled-components"]
+    }
