@@ -8,7 +8,7 @@ import {
   Button,
   Title,
   TimerWrapper,
-} from "./style";
+} from "./clock.style";
 
 function Clock() {
   return (

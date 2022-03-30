@@ -24,7 +24,7 @@ export const SetupInnerContainer = styled.div`
 `;
 
 export const SetupTitle = styled.p`
-    font-size: 12px;
+    font-size: 14px;
     margin: ${props => props.timeSetup ? '12.5px 0' : '7.5px 0'};
     align-self: flex-start;
     grid-column: 1;

@@ -5,15 +5,16 @@ export const ClockContainer = styled.div`
   display: flex;
   position: absolute;
   top: 125px;
-  background-color: ${scheme.colors.primary[100]};
+  background-color: ${scheme.colors.neutrals[100]};
   border-radius: 50%;
+  border: 5px solid ${scheme.colors.primary[100]};
   @media (max-width: 600px) {
     width: 300px;
     height: 300px;
   }
   width: 325px;
   height: 325px;
-  box-shadow: 0 0 10px 5px rgb(0 165 207/ 50%);
+  //box-shadow: 0 0 10px 5px rgb(0 165 207/ 50%);
   z-index: 1;
 `;
 

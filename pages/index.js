@@ -1,6 +1,6 @@
 import React from "react";
-import Clock from "../src/components/clock";
-import Setup from "../src/components/setup";
+import Clock from "../src/components/clock/clock";
+import Setup from "../src/components/setup/setup";
 import { Wrapper } from "../src/components/common/style";
 
 function Index() {

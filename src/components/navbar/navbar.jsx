@@ -1,4 +1,4 @@
-import { Login, Nav, NavItem, NavItemContainer } from "./style";
+import { Login, Nav, NavItem, NavItemContainer } from "./navbar.style";
 
 function Navbar() {
   return (

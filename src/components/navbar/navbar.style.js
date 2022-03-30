@@ -5,12 +5,13 @@ export const Nav = styled.nav`
     position: sticky;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 15px;
     top: 0px;
     width: 100%;
-    height: 80px;
+    height: 70px;
     background-color: ${scheme.colors.neutrals[100]};
     box-shadow: 0 0 10px 5px rgb(0 0 0/ 50%);
+    z-index: 100;
 `;
 
 export const NavItemContainer = styled.div`

@@ -1,4 +1,4 @@
-import { Content, Foot } from "./style";
+import { Content, Foot } from "./footer.style";
 
 function Footer() {
   return (

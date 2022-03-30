@@ -4,7 +4,7 @@ import {
   SetupInput,
   SetupTitle,
   TimeWrapper,
-} from "./style";
+} from "./setup.style";
 
 function Setup() {
   return (
@@ -18,11 +18,11 @@ function Setup() {
           <TimeWrapper>
           <SetupTitle timeSetup>Duration:</SetupTitle>
           <SetupInput />
-          <SetupTitle timeSetup>Category:</SetupTitle>
+          <SetupTitle timeSetup>Short Break:</SetupTitle>
           <SetupInput />
-          <SetupTitle timeSetup>Category:</SetupTitle>
+          <SetupTitle timeSetup>Long Break:</SetupTitle>
           <SetupInput />
-          <SetupTitle timeSetup>Category:</SetupTitle>
+          <SetupTitle timeSetup>Relay:</SetupTitle>
           <SetupInput />
           </TimeWrapper>
         </SetupInnerContainer>
