@@ -12,9 +12,16 @@ export const Body = styled.div`
 
 export const Wrapper = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    @media (max-width: 660px) {
+        flex-direction: column;
+    }
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100%;
-    padding: 20px 0;
+    padding: 20px 150px;
+    @media (max-width: 650px) {
+        padding: 0;
+    }
 `;

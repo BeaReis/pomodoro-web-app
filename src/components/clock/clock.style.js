@@ -3,19 +3,18 @@ import scheme from "../../../public/colors.json";
 
 export const ClockContainer = styled.div`
   display: flex;
-  position: absolute;
-  top: 125px;
   background-color: ${scheme.colors.neutrals[100]};
-  border-radius: 50%;
-  border: 5px solid ${scheme.colors.primary[100]};
-  @media (max-width: 600px) {
-    width: 300px;
-    height: 300px;
+  border-radius: 5%;
+  border: 5px solid ${scheme.colors.primary[300]};
+  @media (max-width: 660px) {
+    width: 250px;
+    height: 200px;
   }
-  width: 325px;
-  height: 325px;
-  //box-shadow: 0 0 10px 5px rgb(0 165 207/ 50%);
+  width: 300px;
+  height: 250px;
+  box-shadow: 0 0 10px 5px rgb(160 0 0/ 50%);
   z-index: 1;
+  margin: 20px 0;
 `;
 
 export const ClockFrame = styled.div`
@@ -28,34 +27,15 @@ export const ClockFrame = styled.div`
   height: 95%;
   margin: auto auto;
   align-items: center;
+  padding: 15px;
 `;
 
-export const PlayButton = styled.button`
-  box-sizing: border-box;
-  width: 35px;
-  height: 35px;
-  border-width: 20px 0px 20px 35px;
-  border-style: solid;
-  border-color: transparent ${scheme.colors.neutrals[300]};
-  margin: 20px 0 0 20px;
-  cursor: pointer;
-  :hover {
-    border-color: transparent ${scheme.colors.primary[200]};
-  }
-`;
-
-export const PauseButton = styled.button`
-  box-sizing: border-box;
-  width: 40px;
-  height: 40px;
-  border-width: 0px 25px 0px 0px;
-  border-style: double;
-  border-color: transparent ${scheme.colors.neutrals[300]};
-  margin: 20px 20px 0 0;
-  cursor: pointer;
-  :hover {
-    border-color: transparent ${scheme.colors.primary[200]};
-  }
+export const Title = styled.p`
+  font-size: 12px;
+  border-radius: 50%;
+  width: 200px;
+  word-wrap: break-word;
+  text-align: center;
 `;
 
 export const TimeFrame = styled.div`
@@ -64,41 +44,56 @@ export const TimeFrame = styled.div`
   align-items: center;
   width: 200px;
   height: 100px;
-  margin: 15px 15px 0 15px;
+  @media (max-width: 660px) {
+    font-size: 64px;
+  }
   font-size: 80px;
+  margin: 20px;
   background-color: transparent;
+`;
+
+export const PlayButton = styled.button`
+  box-sizing: border-box;
+  @media (max-width: 660px) {
+    width: 25px;
+    height: 25px;
+    border-width: 15px 0px 15px 25px;
+  }
+  width: 35px;
+  height: 35px;
+  border-width: 20px 0px 20px 35px;
+  border-style: solid;
+  border-color: transparent ${scheme.colors.neutrals[300]};
+  cursor: pointer;
+  :hover {
+    border-color: transparent ${scheme.colors.primary[200]};
+  }
+`;
+
+export const PauseButton = styled.button`
+  box-sizing: border-box;
+  @media (max-width: 660px) {
+    width: 25px;
+    height: 25px;
+    border-width: 0 20px 0 0;
+  }
+  width: 40px;
+  height: 40px;
+  margin-right: 50px;
+  border-width: 0px 25px 0px 0px;
+  border-style: double;
+  border-color: transparent ${scheme.colors.neutrals[300]};
+  cursor: pointer;
+  :hover {
+    border-color: transparent ${scheme.colors.primary[200]};
+  }
 `;
 
 export const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: ${(props) => (props.play ? "center" : "space-between")};
+  justify-content: center;
   align-items: center;
-  width: ${(props) => (props.play ? "275px" : "80%")};
+  width: 275px;
   background-color: transparent;
-  position: ${(props) => (props.play ? "" : "relative")};
-  top: ${props => props.play ? '' : '10px'};
-  @media (max-width: 600px) {
-    top: ${props => props.play ? '' : '5px'};
-  }
-`;
-
-export const Button = styled.button`
-  background-color: ${props => props.setup ? scheme.colors.neutrals[300] : scheme.colors.primary[200]};
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  @media (max-width: 600px) {
-    width: 45px;
-    height: 45px;
-  }
-`;
-
-export const Title = styled.p`
-  font-size: 12px;
-  margin-top: 50px;
-  border-radius: 50%;
-  width: 200px;
-  word-wrap: break-word;
-  text-align: center;
 `;

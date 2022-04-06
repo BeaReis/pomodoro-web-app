@@ -4,19 +4,17 @@ import scheme from "../../../public/colors.json";
 export const SetupContainer = styled.div`
   border: 1px solid ${scheme.colors.primary[100]};
   border-radius: 10px;
-  width: 325px;
+  width: 300px;
   height: 500px;
-  position: relative;
-  top: 100px;
+  margin: 20px 0;
   @media (max-width: 600px) {
     width: 300px;
     height: 450px;
-    top: 90px;
   }
 `;
 
 export const SetupInnerContainer = styled.div`
-    margin: 175px 20px 0 20px ;
+    margin: 0 20px 0 20px ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,4 +42,19 @@ export const SetupInput = styled.input`
     border: 1px solid ${scheme.colors.primary[100]};
     border-radius: 5px;
     grid-column: 2;
+`;
+
+export const Button = styled.button`
+  background-color: ${props => props.setup ? scheme.colors.neutrals[300] : scheme.colors.primary[200]};
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  @media (max-width: 600px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
+
+export const Wrapper = styled.div`
+
 `;
