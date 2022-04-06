@@ -1,15 +1,36 @@
+import React, { useState } from 'react'
 import {
   SetupContainer,
   SetupInnerContainer,
   SetupInput,
   SetupTitle,
   TimeWrapper,
+  Button,
+  Wrapper
 } from "./setup.style";
 
-function Setup() {
+function Setup(props) {
+
+  const [visibility, setVisibility] = useState(false);
+  
+
+
   return (
     <>
-      <SetupContainer>
+      <Wrapper>
+          <Button onClick={function (event){
+            event.preventDefault();
+            console.log(visibility);
+            console.log(event);
+            if(visibility === false) {
+              setVisibility(true);
+            } else {
+              setVisibility(false);
+            }
+          }}/>
+      </Wrapper>
+      {visibility && (
+      <SetupContainer >
         <SetupInnerContainer>
           <SetupTitle>Title:</SetupTitle>
           <SetupInput />
@@ -27,6 +48,7 @@ function Setup() {
           </TimeWrapper>
         </SetupInnerContainer>
       </SetupContainer>
+      )}
     </>
   );
 }
