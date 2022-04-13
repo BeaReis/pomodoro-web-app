@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import scheme from '../public/colors.json';
+import scheme from "../public/colors.json";
 import Layout from "../src/components/common/layout";
 
 const GlobalStyle = createGlobalStyle`
@@ -11,13 +11,24 @@ const GlobalStyle = createGlobalStyle`
           box-sizing: border-box;
           list-style: none;
           font-family: 'Montserrat', sans-serif;
-          font-weight: 100;
+          font-weight: 500;
           color: white;
         }
 
+        div, p {
+          background-color: transparent;
+        }
+
         /* App fit Height */ 
-        html, body, #__next {
-          height: 100%;
+        html, body {
+          height: 100vh;
+          width: 100vw;
+        }
+
+        #__next {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
         }
 
         main {
@@ -28,14 +39,13 @@ const GlobalStyle = createGlobalStyle`
         }
 `;
 
-
 export default function MyApp({ Component, pageProps }) {
-    return (
+  return (
     <>
-    <GlobalStyle />
-    <Layout>
-    <Component {...pageProps} />
-    </Layout>
+      <GlobalStyle />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
-    )
+  );
 }

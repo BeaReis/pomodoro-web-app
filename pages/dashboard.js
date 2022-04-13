@@ -1,11 +1,11 @@
 import React from 'react';
 
-function About() {
+function Dashboard() {
     return (
         <>
-        hello there
+        Dashboard
         </>
     );
 }
 
-export default About;
+export default Dashboard;
