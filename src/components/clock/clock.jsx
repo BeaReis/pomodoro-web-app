@@ -10,9 +10,7 @@ import {
 } from "./clock.style";
 
 function Clock(props) {
-  var min = 25;
-  const [mode, setMode] = useState(props.mode);
-  const [minutes, setMinutes] = useState(min);
+  const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
@@ -40,15 +38,14 @@ function Clock(props) {
 
     /* */
     useEffect(() => {
-      if (mode === "Pomodoro") {
-        setMinutes(props.pomodoro); 
-      } else if (mode === "Short Break") {
+      if (props.mode === "long") {
+        setMinutes(props.longBreak);
+      } else if (props.mode === "short") {
         setMinutes(props.shortBreak);
       } else {
-        setMinutes(props.longBreak);
+        setMinutes(props.pomodoro);
       }
-      
-    }, [min])
+    }, [props.mode, props.pomodoro, props.shortBreak, props.longBreak])
 
   function handlePause() {
     // 'clearInterval' cancels a timed , repeating action established by setInterval
@@ -77,9 +74,8 @@ function Clock(props) {
    
   return (
     <>
-      <ClockContainer mode={mode}>
+      <ClockContainer mode={props.mode}>
         <ClockFrame>
-          <Title>Title</Title>
           <TimeFrame>
             {timerMinutes}
             <span>:</span>
