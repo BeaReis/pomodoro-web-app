@@ -6,7 +6,6 @@ import {
   SetupTitle,
   TimeWrapper,
   Button,
-  Wrapper,
 } from "./setup.style";
 
 function Setup(props) {

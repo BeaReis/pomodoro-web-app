@@ -5,10 +5,11 @@ import Mode from "../src/components/mode/mode";
 import { Wrapper, InnerWrapper } from "../src/components/common/style";
 
 function Index() {
+  /*  */
   const [pomodoro, setPomodoro] = useState(25);
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(15);
-  const [mode, setMode] = useState("Pomodoro");
+  const [mode, setMode] = useState("pomodoro");
 
   return (
     <>
@@ -23,7 +24,7 @@ function Index() {
           />
         </InnerWrapper>
         <Setup
-          setPomoro={setPomodoro}
+          setPomodoro={setPomodoro}
           setShortBreak={setShortBreak}
           setLongBreak={setLongBreak}
         />

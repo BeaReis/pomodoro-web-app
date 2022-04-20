@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   ClockContainer,
   ClockFrame,
@@ -6,72 +6,121 @@ import {
   PauseButton,
   PlayButton,
   TimeFrame,
-  Title,
 } from "./clock.style";
 
 function Clock(props) {
+  const [activeMode, setActiveMode] = useState("pomodoro");
+  const [pomodoro, setPomodoro] = useState({ minutes: 25, seconds: 0 });
+  const [short, setShort] = useState({ minutes: 5, seconds: 0 });
+  const [long, setLong] = useState({ minutes: 15, seconds: 0 });
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
   const [active, setActive] = useState(false);
+  let interval;
 
   /* Countdown timer triggered by changes in 'seconds' state */
-    useEffect(() => {
-      if(active === true) {
-      let interval = setInterval(() => {
+  useEffect(() => {
+    
+    if (active === true) {
+      interval = setInterval(() => {
+        // 'clearInterval' cancels a timed , repeating action established by setInterval
         clearInterval(interval);
-
+        console.log("Iniciei um intervalo");  
         if (seconds === 0) {
           if (minutes !== 0) {
             setSeconds(59);
             setMinutes(minutes - 1);
-          } else {
-            console.log("");
           }
         } else {
-          setSeconds(seconds - 1);
+            setSeconds(seconds - 1);
         }
       }, 1000);
-    }
-    }, [seconds]);
 
-    /* */
-    useEffect(() => {
-      if (props.mode === "long") {
-        setMinutes(props.longBreak);
-      } else if (props.mode === "short") {
-        setMinutes(props.shortBreak);
-      } else {
-        setMinutes(props.pomodoro);
-      }
-    }, [props.mode, props.pomodoro, props.shortBreak, props.longBreak])
+    } else {
+      clearInterval(interval);
+    }
+    // Pesquisar sobre return no useEffect
+    return () => clearInterval(interval);
+  }, [active, seconds]);
+
+  /* Whenever mode changes... */
+  useEffect(() => {
+    // Pause timer when mode is switched
+    setActive(false);
+
+    switch (activeMode) {
+      case "long":
+        setLong({ minutes, seconds });
+        break;
+      case "short":
+        setShort({ minutes, seconds });
+        break;
+      case "pomodoro":
+        setPomodoro({ minutes, seconds });
+        break;
+      default:
+        console.log("Bomba");
+    }
+
+    switch (props.mode) {
+      case "long":
+        setMinutes(long.minutes);
+        setSeconds(long.seconds);
+        break;
+      case "short":
+        setMinutes(short.minutes);
+        setSeconds(short.seconds);
+        break;
+      case "pomodoro":
+        setMinutes(pomodoro.minutes);
+        setSeconds(pomodoro.seconds);
+        break;
+      default:
+        console.log("É isso?");
+    }
+    setActiveMode(props.mode);
+  }, [props.mode]);
+
+  /* Whenever props.{mode} changes */
+  // useEffect(() => {
+
+  //   switch(props.mode) {
+  //     case "long": {
+
+  //     }
+  //     case "short": {
+
+  //     }
+  //     case "pomodoro": {
+
+  //     }
+  //     default: console.log(props.mode);
+  //   }
+
+  // }, [props.pomodoro, props.shortBreak, props.longBreak]);
 
   function handlePause() {
-    // 'clearInterval' cancels a timed , repeating action established by setInterval
-    clearInterval(seconds);
     setActive(false);
-    console.log(active);
   }
 
   function handlePlay() {
     // Enables setInterval
     setActive(true);
-    console.log(timerMinutes);
     /* To start countdown: if seconds > 0 countdown has already started, 
     else triggers useEffect by changing state of seconds. */
     if (seconds > 0) {
       // To resume countdown
       if (active === false) {
-        setSeconds(seconds-1);
+        setSeconds(seconds - 1);
       }
     } else {
-      setMinutes(minutes-1);
+      setMinutes(minutes - 1);
       setSeconds(59);
     }
-    console.log(active);
   }
-   
+
   return (
     <>
       <ClockContainer mode={props.mode}>

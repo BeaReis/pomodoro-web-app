@@ -56,7 +56,3 @@ export const Button = styled.button`
     height: 45px;
   }
 `;
-
-export const Wrapper = styled.div`
-
-`;
