@@ -4,10 +4,6 @@ import { ButtonLabel, Container, ModeButton, Span } from "./mode.style";
 function Mode(props) {
   const [checked, setChecked] = useState(["pomodoro", "", ""]);
 
-  useEffect(() => {
-    setChecked(checked);
-  }, [checked]);
-
   return (
     <>
       <Container>
