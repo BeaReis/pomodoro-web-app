@@ -22,6 +22,17 @@ export const SetupInnerContainer = styled.div`
     align-items: center;
 `;
 
+export const Title = styled.p`
+  justify-self: center;
+  margin: 5px 0 10px 0;
+`;
+
+export const Separator = styled.hr`
+  background-color: white;
+  width: 100%;
+  height: 1px;
+`;
+
 export const SetupTitle = styled.p`
     font-size: 14px;
     margin: ${props => props.timeSetup ? '16px 0 0 0' : '12.5px 0 7.5px 0'};
@@ -32,7 +43,8 @@ export const SetupTitle = styled.p`
 export const TimeWrapper = styled.div`
     display: grid;
     column-gap: 50px;
-    margin-top: 10px;
+    margin: 5px 0 10px 0;
+
 `;
 
 export const SetupInput = styled.input`

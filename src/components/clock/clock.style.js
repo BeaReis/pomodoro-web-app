@@ -82,15 +82,15 @@ export const PlayButton = styled.button`
 
 export const PauseButton = styled.button`
   box-sizing: border-box;
-  @media (max-width: 7200px) {
-    width: 35px;
-    height: 35px;
+  @media (max-width: 720px) {
+    width: 30px;
+    height: 30px;
     border-width: 0 20px 0 0;
   }
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-right: 50px;
-  border-width: 0px 35px 0px 0px;
+  border-width: 0px 30px 0px 0px;
   border-style: double;
   border-color: transparent ${scheme.colors.neutrals[300]};
   cursor: pointer;

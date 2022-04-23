@@ -8,8 +8,13 @@ import {
   TimeFrame,
 } from "./clock.style";
 
+/* This is the timer component, which:
+  - Shows changes in time and style according to active mode;
+  - Can Play, Pause and Stop */
 function Clock(props) {
+  // 
   const [activeMode, setActiveMode] = useState("pomodoro");
+  //
   const [pomodoro, setPomodoro] = useState({ minutes: 25, seconds: 0 });
   const [short, setShort] = useState({ minutes: 5, seconds: 0 });
   const [long, setLong] = useState({ minutes: 15, seconds: 0 });
@@ -17,14 +22,15 @@ function Clock(props) {
   const [seconds, setSeconds] = useState(0);
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
+  // Controls countdown state (start/resume and pause)
   const [active, setActive] = useState(false);
-  let interval;
+  // 
 
   /* Countdown timer triggered by changes in 'seconds' state */
   useEffect(() => {
     
     if (active === true) {
-      interval = setInterval(() => {
+      var interval = setInterval(() => {
         // 'clearInterval' cancels a timed , repeating action established by setInterval
         clearInterval(interval);
         console.log("Iniciei um intervalo");  
@@ -32,6 +38,8 @@ function Clock(props) {
           if (minutes !== 0) {
             setSeconds(59);
             setMinutes(minutes - 1);
+          } else if (minutes === 0 && seconds === 0) {
+            console.log("FINISHED POMDOORO");
           }
         } else {
             setSeconds(seconds - 1);
@@ -50,6 +58,8 @@ function Clock(props) {
     // Pause timer when mode is switched
     setActive(false);
 
+    /* Uses 'activeMode' to "save" last set time for each mode to prevent time from 
+    reseting on mode change. */
     switch (activeMode) {
       case "long":
         setLong({ minutes, seconds });
@@ -61,9 +71,10 @@ function Clock(props) {
         setPomodoro({ minutes, seconds });
         break;
       default:
-        console.log("Bomba");
+        
     }
 
+    /* Uses props.mode to set minutes and seconds according to current mode. */
     switch (props.mode) {
       case "long":
         setMinutes(long.minutes);
@@ -78,33 +89,47 @@ function Clock(props) {
         setSeconds(pomodoro.seconds);
         break;
       default:
-        console.log("É isso?");
+        
     }
     setActiveMode(props.mode);
   }, [props.mode]);
 
-  /* Whenever props.{mode} changes */
-  // useEffect(() => {
+  /* Whenever settings changes */
+  useEffect(() => {
 
-  //   switch(props.mode) {
-  //     case "long": {
+    setActive(false);
+    /* Apply changes to each mode independent of active mode */
+    setPomodoro({ minutes: props.pomodoro, seconds: 0 });
+    setShort({ minutes: props.shortBreak, seconds: 0 });
+    setLong({ minutes: props.longBreak, seconds: 0 });
 
-  //     }
-  //     case "short": {
+    /* When the user change the settings, seconds will be set to 0 and minutes to users input. */
+    switch(props.mode) {
+      case "long": 
+        setMinutes(props.longBreak);
+        setSeconds(0);
+        break;
+      case "short": {
+        setMinutes(props.shortBreak);
+        setSeconds(0);
+        break;
+      }
+      case "pomodoro": {
+        setMinutes(props.pomodoro);
+        setSeconds(0);
+        break;
+      }
+      default: 
+    }
 
-  //     }
-  //     case "pomodoro": {
+  }, [props.pomodoro, props.shortBreak, props.longBreak]);
 
-  //     }
-  //     default: console.log(props.mode);
-  //   }
-
-  // }, [props.pomodoro, props.shortBreak, props.longBreak]);
-
+  // Changes timer active state to false and pauses the countdown.
   function handlePause() {
     setActive(false);
   }
 
+   // Changes timer active state to true and starts the countdown.
   function handlePlay() {
     // Enables setInterval
     setActive(true);

@@ -6,6 +6,8 @@ import {
   SetupTitle,
   TimeWrapper,
   Button,
+  Title,
+  Separator,
 } from "./setup.style";
 
 function Setup(props) {
@@ -20,20 +22,22 @@ function Setup(props) {
 
   return (
     <>
-        <Button
-          onClick={function (event) {
-            event.preventDefault();
-            if (visibility === false) {
-              setVisibility(true);
-            } else {
-              setVisibility(false);
-            }
-          }}
-        />
+      <Button
+        onClick={function (event) {
+          event.preventDefault();
+          if (visibility === false) {
+            setVisibility(true);
+          } else {
+            setVisibility(false);
+          }
+        }}
+      />
 
       {visibility && (
         <SetupContainer>
           <SetupInnerContainer>
+            <Title>Timer</Title>
+            <Separator />
             <TimeWrapper>
               <SetupTitle timeSetup>Duration:</SetupTitle>
               <SetupInput
@@ -56,7 +60,6 @@ function Setup(props) {
                 defaultValue={settings.short}
                 onChange={(event) => {
                   const value = event.target.value;
-
                   props.setShortBreak(value);
                   setSettings((prevState) => ({ ...prevState, short: value }));
                 }}
@@ -79,11 +82,12 @@ function Setup(props) {
                 defaultValue={settings.relay}
                 onChange={(event) => {
                   const value = event.target.value;
-                  props.setLongBreak(value);
-                  setSettings((prevState) => ({ ...prevState, relay: value }));
+                  //setSettings((prevState) => ({ ...prevState, relay: value }));
                 }}
               />
             </TimeWrapper>
+            <Title>Sound</Title>
+            <Separator />
           </SetupInnerContainer>
         </SetupContainer>
       )}
