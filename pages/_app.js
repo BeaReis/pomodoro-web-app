@@ -21,21 +21,20 @@ const GlobalStyle = createGlobalStyle`
 
         /* App fit Height */ 
         html, body {
-          height: 100vh;
+          position: relative;
           width: 100vw;
+          min-height: 100vh;
         }
 
         #__next {
           display: flex;
           flex-direction: column;
-          height: 100vh;
         }
 
         main {
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 100%;
         }
 `;
 
