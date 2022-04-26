@@ -12,7 +12,7 @@ import {
 
 function Setup(props) {
   /* Controls visibility of the settings window */
-  const [visibility, setVisibility] = useState(false);
+  const visibility = props.visible;
   const [settings, setSettings] = useState({
     pomodoro: 25,
     short: 5,
@@ -22,17 +22,6 @@ function Setup(props) {
 
   return (
     <>
-      <Button
-        onClick={function (event) {
-          event.preventDefault();
-          if (visibility === false) {
-            setVisibility(true);
-          } else {
-            setVisibility(false);
-          }
-        }}
-      />
-
       {visibility && (
         <SetupContainer>
           <SetupInnerContainer>
