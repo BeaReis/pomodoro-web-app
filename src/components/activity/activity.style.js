@@ -6,11 +6,12 @@ export const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 370px;
-  height: 35px;
+  width: 500px;
   font-size: 12px;
   @media (max-width: 720px) {
     width: 330px;
+    flex-direction: column;
+    align-content: space-between;
   }
 `;
 
@@ -21,8 +22,9 @@ export const Category = styled.input`
   background-color: ${scheme.colors.neutrals[200]};
   padding: 5px;
   color: #FFF;
-  width: 100px; 
+  width: 150px; 
   height: 35px;
+  margin: 10px 0 0 0;
 `;
 
 export const Description = styled.input`
@@ -31,8 +33,8 @@ export const Description = styled.input`
   border-radius: 5px;
   background-color: ${scheme.colors.neutrals[200]};
   padding: 5px;
-  margin-left: 10px;
-  width: 180px;
+  margin: 10px 0 0 10px;
+  width: 290px;
   height: 35px;
 `;
 
@@ -42,7 +44,7 @@ export const AddButton = styled.button`
   font-size: 24px;
   width: 35px;
   height: 35px; 
-  margin: 0 0 0 10px;
+  margin: 10px 0 0 10px;
   border: none;
   cursor: pointer;
   :hover{

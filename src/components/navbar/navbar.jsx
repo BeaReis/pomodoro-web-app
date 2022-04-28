@@ -1,14 +1,21 @@
-import { Login, Nav, NavItem, NavItemContainer } from "./navbar.style";
+import Link from "next/link";
+import { Wrapper, Nav, NavItem, NavItemContainer } from "./navbar.style";
 
 function Navbar() {
   return (
     <>
       <Nav>
+        <Link href={"/"}>
+          <NavItem logo>TOMATO 🍅 TIMER</NavItem>
+        </Link>
         <NavItemContainer>
-          <NavItem>HOME</NavItem>
-          <NavItem>ABOUT</NavItem>
+          <Link href={"/"}>
+            <NavItem>Dashboard</NavItem>
+          </Link>
+          <Link href={"/"}>
+            <NavItem>Login</NavItem>
+          </Link>
         </NavItemContainer>
-        <Login>LOGIN</Login>
       </Nav>
     </>
   );

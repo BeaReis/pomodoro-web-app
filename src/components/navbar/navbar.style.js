@@ -7,8 +7,8 @@ export const Nav = styled.nav`
     justify-content: space-between;
     padding: 15px;
     top: 0px;
-    width: 100%;
-    height: 70px;
+    width: 100vw;
+    height: 60px;
     background-color: ${scheme.colors.neutrals[100]};
     box-shadow: 0 0 10px 5px rgb(0 0 0/ 50%);
     z-index: 100;
@@ -16,26 +16,21 @@ export const Nav = styled.nav`
 
 export const NavItemContainer = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
 `;
 
 export const NavItem = styled.a`
     display: flex;
+    font-family: ${props => props.logo ? "Pacifico" : "Montserrat"};
     background-color: ${scheme.colors.neutrals[100]};
     border-radius: 5px;
     margin: auto 15px;
     cursor: pointer;
-`;
-
-export const Login = styled.button`
-    padding: 0 15px;
-    margin: 0;
-    font-size: 14px;
-    border: 1px solid ${scheme.colors.primary[100]};
-    border-radius: 7px;
-    cursor: pointer;
     :hover {
-        background-color: ${scheme.colors.primary[100]};
-        transition: 0.7s;
+        color: ${scheme.colors.primary[300]};
+        transition: 0.5s;
+    }
+    @media (max-width: 660px) {
+        font-size: 14px;
     }
 `;

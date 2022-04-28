@@ -14,7 +14,7 @@ import {
 function Setup(props) {
   /* Controls visibility of the settings window */
   const visibility = props.visible;
-  const [relayState, setRelayState] = useState("");
+  const [relayState, setRelayState] = useState({ prop: "", active: false });
   const [volumeState, setVolumeState] = useState("");
   const [settings, setSettings] = useState({
     pomodoro: 25,
@@ -33,6 +33,7 @@ function Setup(props) {
             <TimeWrapper>
               <SetupTitle timeSetup>Duration:</SetupTitle>
               <SetupInput
+                min={1}
                 timeSetup
                 type="number"
                 defaultValue={settings.pomodoro}
@@ -47,6 +48,7 @@ function Setup(props) {
               />
               <SetupTitle timeSetup>Short Break:</SetupTitle>
               <SetupInput
+                min={1}
                 timeSetup
                 type="number"
                 defaultValue={settings.short}
@@ -58,6 +60,7 @@ function Setup(props) {
               />
               <SetupTitle timeSetup>Long Break:</SetupTitle>
               <SetupInput
+                min={1}
                 timeSetup
                 type="number"
                 defaultValue={settings.long}
@@ -69,6 +72,7 @@ function Setup(props) {
               />
               <SetupTitle timeSetup>Relay:</SetupTitle>
               <SetupInput
+                min={1}
                 timeSetup
                 type="number"
                 defaultValue={settings.relay}
@@ -79,12 +83,12 @@ function Setup(props) {
               />
               <SetupTitle timeSetup>Activate relay: </SetupTitle>
               <SwitchContainer
-                property={relayState}
+                property={relayState.prop}
                 onClick={() => {
-                  if (relayState === "active") {
-                    setRelayState("");
+                  if (relayState.active === true) {
+                    setRelayState({prop: "", active: false});
                   } else {
-                    setRelayState("active");
+                    setRelayState({prop: "active", active: true});
                   }
                 }}
               />

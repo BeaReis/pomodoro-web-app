@@ -9,7 +9,7 @@ function Activity(props) {
     <>
       <Wrapper>
         <Category
-          maxLength={30}
+          maxLength={25}
           placeholder="Add category..."
           value={category}
           onChange={(event) => {
@@ -26,7 +26,7 @@ function Activity(props) {
           }}
         />
         <Description
-          maxLength={40}
+          maxLength={35}
           placeholder="Add activity..."
           value={activity}
           onChange={(event) => {

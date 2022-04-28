@@ -3,17 +3,19 @@ import scheme from "../../../public/colors.json";
 
 export const SetupContainer = styled.div`
   position: relative;
-  top: 60px;
+  top: 45px;
   background-color: ${scheme.colors.neutrals[200]};
   border-radius: 10px;
   padding: 10px 15px;
   width: 300px;
   height: 400px;
+  margin-left: 100px;
   @media (max-width: 720px) {
     width: 300px;
     height: 400px;
     margin-top: 20px;
     top: 20px;
+    margin-left: 0;
   }
 `;
 
@@ -110,10 +112,7 @@ export const Volume = styled.input`
   display: flex;
   justify-self: flex-end;
   margin-top: 20px;
+  accent-color: red;
   width: 150px;
   height: 5px;
-`;
-
-export const Icon = styled.img`
-  width: 40px;
 `;
