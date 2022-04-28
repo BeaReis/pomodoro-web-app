@@ -5,14 +5,17 @@ import {
   SetupInput,
   SetupTitle,
   TimeWrapper,
-  Button,
   Title,
   Separator,
+  SwitchContainer,
+  Volume,
 } from "./setup.style";
 
 function Setup(props) {
   /* Controls visibility of the settings window */
   const visibility = props.visible;
+  const [relayState, setRelayState] = useState("");
+  const [volumeState, setVolumeState] = useState("");
   const [settings, setSettings] = useState({
     pomodoro: 25,
     short: 5,
@@ -74,9 +77,35 @@ function Setup(props) {
                   //setSettings((prevState) => ({ ...prevState, relay: value }));
                 }}
               />
+              <SetupTitle timeSetup>Activate relay: </SetupTitle>
+              <SwitchContainer
+                property={relayState}
+                onClick={() => {
+                  if (relayState === "active") {
+                    setRelayState("");
+                  } else {
+                    setRelayState("active");
+                  }
+                }}
+              />
             </TimeWrapper>
             <Title>Sound</Title>
             <Separator />
+            <TimeWrapper sound>
+              <SetupTitle>Volume:</SetupTitle>
+              <Volume type="range"/>
+              <SetupTitle timeSetup>Alarm sound:</SetupTitle>
+              <SwitchContainer
+                property={volumeState}
+                onClick={() => {
+                  if (volumeState === "active") {
+                    setVolumeState("");
+                  } else {
+                    setVolumeState("active");
+                  }
+                }}
+              />
+            </TimeWrapper>
           </SetupInnerContainer>
         </SetupContainer>
       )}
