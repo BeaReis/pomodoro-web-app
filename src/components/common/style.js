@@ -48,9 +48,15 @@ export const Button = styled.button`
     right: 10px;
     margin: 10px;
     border-radius: 50%;
-    background-color: ${scheme.colors.primary[100]};
-    width: 50px;
-    height: 50px;
+    border: none;
+    background: url("../../../public/icons/settings_icon.png") no-repeat;
+    background-color: ${scheme.colors.primary[200]};
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    :hover {
+        opacity: 0.8;
+    }
     @media (max-width: 720px) {
         bottom: 70px;
         z-index: 10;

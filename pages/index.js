@@ -9,6 +9,8 @@ import {
   Button,
 } from "../src/components/common/style";
 import Activity from "../src/components/activity/activity";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 function Index() {
   /*  */
@@ -35,7 +37,14 @@ function Index() {
           />
           <Activity setActivity={setActivity} setCategory={setCategory} />
         </InnerWrapper>
-        <Button onClick={() => setVisible(!visible)} />
+
+        <Button onClick={() => setVisible(!visible)}>
+          <FontAwesomeIcon
+            icon={faGear}
+            size="2x"
+            style={{background: 'transparent'}}
+          />
+        </Button>
         <Setup
           visible={visible}
           setPomodoro={setPomodoro}
@@ -43,7 +52,6 @@ function Index() {
           setLongBreak={setLongBreak}
         />
       </Wrapper>
-      
     </>
   );
 }
