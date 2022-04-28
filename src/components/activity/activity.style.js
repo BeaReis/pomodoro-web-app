@@ -16,9 +16,9 @@ export const Wrapper = styled.div`
 
 export const Category = styled.input`
   display: flex;
-  border: 1px solid ${scheme.colors.primary[300]};
+  border: 1px;
   border-radius: 5px;
-  background-color: ${scheme.colors.neutrals[400]};
+  background-color: ${scheme.colors.neutrals[200]};
   padding: 5px;
   color: #FFF;
   width: 100px; 
@@ -27,9 +27,9 @@ export const Category = styled.input`
 
 export const Description = styled.input`
   display: flex;
-  border: 1px solid ${scheme.colors.primary[300]};
+  border: 1px;
   border-radius: 5px;
-  background-color: ${scheme.colors.neutrals[400]};
+  background-color: ${scheme.colors.neutrals[200]};
   padding: 5px;
   margin-left: 10px;
   width: 180px;
@@ -43,4 +43,9 @@ export const AddButton = styled.button`
   width: 35px;
   height: 35px; 
   margin: 0 0 0 10px;
+  border: none;
+  cursor: pointer;
+  :hover{
+    opacity: 0.8;
+  }
 `;
