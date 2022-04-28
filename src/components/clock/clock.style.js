@@ -64,11 +64,6 @@ export const TimeFrame = styled.div`
 
 export const PlayButton = styled.button`
   box-sizing: border-box;
-  @media (max-width: 720px) {
-    width: 25px;
-    height: 25px;
-    border-width: 15px 0px 15px 25px;
-  }
   width: 35px;
   height: 35px;
   border-width: 20px 0px 20px 35px;
@@ -78,24 +73,45 @@ export const PlayButton = styled.button`
   :hover {
     border-color: transparent ${scheme.colors.primary[200]};
   }
+  @media (max-width: 720px) {
+    width: 25px;
+    height: 25px;
+    border-width: 15px 0px 15px 25px;
+  }
 `;
 
 export const PauseButton = styled.button`
   box-sizing: border-box;
-  @media (max-width: 720px) {
-    width: 30px;
-    height: 30px;
-    border-width: 0 20px 0 0;
-  }
-  width: 40px;
-  height: 40px;
-  margin-right: 50px;
-  border-width: 0px 30px 0px 0px;
+  width: 35px;
+  height: 35px;
+  margin-right: 40px;
+  border-width: 0px 25px 0px 0px;
   border-style: double;
   border-color: transparent ${scheme.colors.neutrals[300]};
   cursor: pointer;
   :hover {
     border-color: transparent ${scheme.colors.primary[200]};
+  }
+  @media (max-width: 720px) {
+    width: 30px;
+    height: 30px;
+    border-width: 0 20px 0 0;
+  }
+`;
+
+export const StopButton = styled.button`
+  width: 35px;
+  height: 35px;
+  margin-right: 30px;
+  background-color: ${scheme.colors.neutrals[300]};
+  border: none;
+  cursor: pointer;
+  :hover {
+    background-color: ${scheme.colors.primary[200]};
+  }
+  @media (max-width: 720px) {
+    width: 30px;
+    height: 30px;
   }
 `;
 

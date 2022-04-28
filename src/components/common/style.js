@@ -18,15 +18,13 @@ export const Wrapper = styled.div`
     align-items: center;
     width: 100%;
     padding: 20px;
-    margin: 30px;
+    margin: 15px;
 `;
 
 export const InnerWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 50px;
-    width: 350px;
     @media (max-width: 720px) {
         margin: 0;
     }
@@ -49,7 +47,6 @@ export const Button = styled.button`
     margin: 10px;
     border-radius: 50%;
     border: none;
-    background: url("../../../public/icons/settings_icon.png") no-repeat;
     background-color: ${scheme.colors.primary[200]};
     width: 45px;
     height: 45px;

@@ -5,6 +5,7 @@ import {
   InnerContainer,
   PauseButton,
   PlayButton,
+  StopButton,
   TimeFrame,
 } from "./clock.style";
 
@@ -12,7 +13,7 @@ import {
   - Shows changes in time and style according to active mode;
   - Can Play, Pause and Stop */
 function Clock(props) {
-  // 
+  //
   const [activeMode, setActiveMode] = useState("pomodoro");
   //
   const [pomodoro, setPomodoro] = useState({ minutes: 25, seconds: 0 });
@@ -24,16 +25,15 @@ function Clock(props) {
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
   // Controls countdown state (start/resume and pause)
   const [active, setActive] = useState(false);
-  // 
+  //
 
   /* Countdown timer triggered by changes in 'seconds' state */
   useEffect(() => {
-    
     if (active === true) {
       var interval = setInterval(() => {
         // 'clearInterval' cancels a timed , repeating action established by setInterval
         clearInterval(interval);
-        console.log("Iniciei um intervalo");  
+        console.log("Iniciei um intervalo");
         if (seconds === 0) {
           if (minutes !== 0) {
             setSeconds(59);
@@ -42,10 +42,9 @@ function Clock(props) {
             console.log("FINISHED POMDOORO");
           }
         } else {
-            setSeconds(seconds - 1);
+          setSeconds(seconds - 1);
         }
       }, 1000);
-
     } else {
       clearInterval(interval);
     }
@@ -71,7 +70,6 @@ function Clock(props) {
         setPomodoro({ minutes, seconds });
         break;
       default:
-        
     }
 
     /* Uses props.mode to set minutes and seconds according to current mode. */
@@ -79,24 +77,25 @@ function Clock(props) {
       case "long":
         setMinutes(long.minutes);
         setSeconds(long.seconds);
+        setActiveMode(props.mode);
         break;
       case "short":
         setMinutes(short.minutes);
         setSeconds(short.seconds);
+        setActiveMode(props.mode);
         break;
       case "pomodoro":
         setMinutes(pomodoro.minutes);
         setSeconds(pomodoro.seconds);
+        setActiveMode(props.mode);
         break;
       default:
-        
     }
     setActiveMode(props.mode);
   }, [props.mode]);
 
   /* Whenever settings changes */
   useEffect(() => {
-
     setActive(false);
     /* Apply changes to each mode independent of active mode */
     setPomodoro({ minutes: props.pomodoro, seconds: 0 });
@@ -104,8 +103,8 @@ function Clock(props) {
     setLong({ minutes: props.longBreak, seconds: 0 });
 
     /* When the user change the settings, seconds will be set to 0 and minutes to users input. */
-    switch(props.mode) {
-      case "long": 
+    switch (props.mode) {
+      case "long":
         setMinutes(props.longBreak);
         setSeconds(0);
         break;
@@ -119,32 +118,9 @@ function Clock(props) {
         setSeconds(0);
         break;
       }
-      default: 
+      default:
     }
-
   }, [props.pomodoro, props.shortBreak, props.longBreak]);
-
-  // Changes timer active state to false and pauses the countdown.
-  function handlePause() {
-    setActive(false);
-  }
-
-   // Changes timer active state to true and starts the countdown.
-  function handlePlay() {
-    // Enables setInterval
-    setActive(true);
-    /* To start countdown: if seconds > 0 countdown has already started, 
-    else triggers useEffect by changing state of seconds. */
-    if (seconds > 0) {
-      // To resume countdown
-      if (active === false) {
-        setSeconds(seconds - 1);
-      }
-    } else {
-      setMinutes(minutes - 1);
-      setSeconds(59);
-    }
-  }
 
   return (
     <>
@@ -156,8 +132,47 @@ function Clock(props) {
             {timerSeconds}
           </TimeFrame>
           <InnerContainer play>
-            <PauseButton onClick={handlePause} />
-            <PlayButton onClick={handlePlay} />
+            <StopButton
+              onClick={() => {
+                setActive(false);
+                switch (props.mode) {
+                  case "long":
+                    setMinutes(long.minutes);
+                    break;
+                  case "short":
+                    setMinutes(short.minutes);
+                    break;
+                  case "pomodoro":
+                    setMinutes(pomodoro.minutes);
+                    break;
+                  default:
+                }
+                setSeconds(0);
+              }}
+            />
+            <PauseButton
+              onClick={() => {
+                // Changes timer active state to false and pauses the countdown.
+                setActive(false);
+              }}
+            />
+            <PlayButton
+              onClick={() => {
+                // Changes timer active state to true and starts the countdown.
+                setActive(true);
+                /* To start countdown: if seconds > 0 countdown has already started, 
+                else triggers useEffect by changing state of seconds. */
+                if (seconds > 0) {
+                  // To resume countdown
+                  if (active === false) {
+                    setSeconds(seconds - 1);
+                  }
+                } else {
+                  setMinutes(minutes - 1);
+                  setSeconds(59);
+                }
+              }}
+            />
           </InnerContainer>
         </ClockFrame>
       </ClockContainer>
