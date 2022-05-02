@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ClockContainer,
   ClockFrame,
@@ -27,19 +27,21 @@ function Clock(props) {
   const [active, setActive] = useState(false);
   //
 
-  /* Countdown timer triggered by changes in 'seconds' state */
+  /* Countdown timer triggered by changes in 'seconds' or 'active' state */
   useEffect(() => {
     if (active === true) {
       var interval = setInterval(() => {
-        // 'clearInterval' cancels a timed , repeating action established by setInterval
+        // 'clearInterval' cancels a timed, repeating action established by setInterval
         clearInterval(interval);
-        console.log("Iniciei um intervalo");
+        
         if (seconds === 0) {
           if (minutes !== 0) {
             setSeconds(59);
             setMinutes(minutes - 1);
-          } else if (minutes === 0 && seconds === 0) {
-            console.log("FINISHED POMDOORO");
+          } else {
+            if (props.alarmState === true) {
+              playSound();
+            }
           }
         } else {
           setSeconds(seconds - 1);
@@ -48,7 +50,7 @@ function Clock(props) {
     } else {
       clearInterval(interval);
     }
-    // Pesquisar sobre return no useEffect
+
     return () => clearInterval(interval);
   }, [active, seconds]);
 
@@ -122,6 +124,12 @@ function Clock(props) {
     }
   }, [props.pomodoro, props.shortBreak, props.longBreak]);
 
+  function playSound() {
+    const audio = new Audio("/alarm2.wav");
+    audio.volume = props.volume;
+    audio.play();
+  }
+
   return (
     <>
       <ClockContainer mode={props.mode}>
@@ -137,17 +145,17 @@ function Clock(props) {
                 setActive(false);
                 switch (props.mode) {
                   case "long":
-                    setMinutes(long.minutes);
+                    setMinutes(props.longBreak);
                     break;
                   case "short":
-                    setMinutes(short.minutes);
+                    setMinutes(props.shortBreak);
                     break;
                   case "pomodoro":
-                    setMinutes(pomodoro.minutes);
+                    setMinutes(props.pomodoro);
                     break;
                   default:
                 }
-                setSeconds(0);
+                setSeconds(0); 
               }}
             />
             <PauseButton

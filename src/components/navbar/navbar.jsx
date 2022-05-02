@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Wrapper, Nav, NavItem, NavItemContainer } from "./navbar.style";
+import { Nav, NavItem, NavItemContainer } from "./navbar.style";
 
 function Navbar() {
   return (
@@ -9,6 +9,9 @@ function Navbar() {
           <NavItem logo>TOMATO 🍅 TIMER</NavItem>
         </Link>
         <NavItemContainer>
+          <Link href={"/"}>
+            <NavItem>About</NavItem>
+          </Link>
           <Link href={"/"}>
             <NavItem>Dashboard</NavItem>
           </Link>

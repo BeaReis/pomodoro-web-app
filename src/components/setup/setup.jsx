@@ -14,14 +14,15 @@ import {
 function Setup(props) {
   /* Controls visibility of the settings window */
   const visibility = props.visible;
-  const [relayState, setRelayState] = useState({ prop: "", active: false });
-  const [volumeState, setVolumeState] = useState("");
+  const [relay, setRelay] = useState("");
+  const [alarm, setAlarm] = useState("active");
   const [settings, setSettings] = useState({
     pomodoro: 25,
     short: 5,
     long: 15,
     relay: 4,
   });
+  const [volume, setVolume] = useState(50);
 
   return (
     <>
@@ -83,12 +84,14 @@ function Setup(props) {
               />
               <SetupTitle timeSetup>Activate relay: </SetupTitle>
               <SwitchContainer
-                property={relayState.prop}
+                property={relay}
                 onClick={() => {
-                  if (relayState.active === true) {
-                    setRelayState({prop: "", active: false});
+                  if (props.relayState === true) {
+                    setRelay("");
+                    props.setRelayState(false);
                   } else {
-                    setRelayState({prop: "active", active: true});
+                    setRelay("active");
+                    props.setRelayState(true);
                   }
                 }}
               />
@@ -97,15 +100,28 @@ function Setup(props) {
             <Separator />
             <TimeWrapper sound>
               <SetupTitle>Volume:</SetupTitle>
-              <Volume type="range"/>
+              <Volume
+                type="range"
+                value={volume}
+                min={1}
+                max={100}
+                step={1.5}
+                onChange={(event) => {
+                  const value = event.target.value;
+                  setVolume(value);
+                  props.setVolume(value / 100);
+                }}
+              />
               <SetupTitle timeSetup>Alarm sound:</SetupTitle>
               <SwitchContainer
-                property={volumeState}
+                property={alarm}
                 onClick={() => {
-                  if (volumeState === "active") {
-                    setVolumeState("");
+                  if (props.alarmState === true) {
+                    setAlarm("");
+                    props.setAlarmState(false);
                   } else {
-                    setVolumeState("active");
+                    setAlarm("active");
+                    props.setAlarmState(true);
                   }
                 }}
               />
