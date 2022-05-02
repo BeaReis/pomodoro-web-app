@@ -21,6 +21,9 @@ function Index() {
   const [activity, setActivity] = useState("Welcome to your pomodoro!");
   const [category, setCategory] = useState("Category");
   const [visible, setVisible] = useState(false);
+  const [alarmState, setAlarmState] = useState(true);
+  const [relayState, setRelayState] = useState(false);
+  const [volume, setVolume] = useState(0.1);
 
   return (
     <>
@@ -31,6 +34,8 @@ function Index() {
           <Mode setMode={setMode} />
           <Clock
             mode={mode}
+            volume={volume}
+            alarmState={alarmState}
             pomodoro={pomodoro}
             shortBreak={shortBreak}
             longBreak={longBreak}
@@ -47,9 +52,15 @@ function Index() {
         </Button>
         <Setup
           visible={visible}
+          relayState={relayState}
+          alarmState={alarmState}
+          volume={volume}
+          setVolume={setVolume}
           setPomodoro={setPomodoro}
           setShortBreak={setShortBreak}
           setLongBreak={setLongBreak}
+          setRelayState={setRelayState}
+          setAlarmState={setAlarmState}
         />
       </Wrapper>
     </>
