@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ROUTES } from "../../settings";
 import { Nav, NavItem, NavItemContainer } from "./navbar.style";
 
 function Navbar() {
