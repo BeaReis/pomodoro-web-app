@@ -1,6 +1,10 @@
-# Pomodoro Web
+# Timer 🍅 Pomodoro
 ## Description
 This is a web application of a timer developed to be used with [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique), but it can be used as a regular timer as well. The user can add the category and activity they will be doing through the pomodoro session and have it displayed on the screen.
+
+## Links
+- [Timer Pomodoro Live](https://pomodoro-web-app.vercel.app/) 
+- [Timer Pomodoro Repository](https://github.com/BeaReis/pomodoro-web-app)
 
 ## Stacks
 - React
