@@ -1,10 +1,13 @@
-import { Content, Foot } from "./footer.style";
+import Link from "next/link";
+import { Content, Foot, Github } from "./footer.style";
 
 function Footer() {
   return (
     <>
       <Foot>
-        <Content>Developed by Beatriz</Content>
+        <Link href={"https://github.com/BeaReis"}>
+          <Content>Developed by @BeaReis</Content>
+        </Link>
       </Foot>
     </>
   );

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import scheme from '../../../public/colors.json';
+import styled from "styled-components";
+import scheme from "../../../public/colors.json";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,10 +21,13 @@ export const Category = styled.input`
   border-radius: 5px;
   background-color: ${scheme.colors.neutrals[200]};
   padding: 5px;
-  color: #FFF;
-  width: 150px; 
+  color: #fff;
+  width: 150px;
   height: 35px;
   margin: 10px 0 0 0;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 export const Description = styled.input`
@@ -36,6 +39,10 @@ export const Description = styled.input`
   margin: 10px 0 0 10px;
   width: 290px;
   height: 35px;
+  @media (max-width: 720px) {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
 `;
 
 export const AddButton = styled.button`
@@ -43,11 +50,15 @@ export const AddButton = styled.button`
   border-radius: 5px;
   font-size: 24px;
   width: 35px;
-  height: 35px; 
+  height: 35px;
   margin: 10px 0 0 10px;
   border: none;
   cursor: pointer;
-  :hover{
+  :hover {
     opacity: 0.8;
+  }
+  @media (max-width: 720px) {
+    width: 100%;
+    margin: 10px 0 0 0;
   }
 `;

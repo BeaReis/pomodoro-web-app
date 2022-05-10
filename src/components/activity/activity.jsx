@@ -5,6 +5,37 @@ function Activity(props) {
   const [category, setCategory] = useState("");
   const [activity, setActivity] = useState("");
 
+  const handleCategoryOnChange = (event) => {
+    let value = event.target.value;
+    setCategory(value);
+  }
+
+  const handleCategoryOnKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault;
+      props.setActivity(activity);
+      props.setCategory(category);
+    }
+  }
+
+  const handleDescriptionOnChange = (event) => {
+    let value = event.target.value;
+    setActivity(value);
+  }
+
+  const handleDescriptionOnKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault;
+      props.setActivity(activity);
+      props.setCategory(category);
+    }
+  }
+
+  const handleAddButtonOnClick = () => {
+    props.setActivity(activity);
+    props.setCategory(category);
+  }
+
   return (
     <>
       <Wrapper>
@@ -12,41 +43,18 @@ function Activity(props) {
           maxLength={25}
           placeholder="Add category..."
           value={category}
-          onChange={(event) => {
-            const value = event.target.value;
-            setCategory(value);
-
-          }}
-          onKeyDown={(event) => {
-            if(event.key === "Enter") {
-              event.preventDefault;
-              props.setActivity(activity);
-              props.setCategory(category);
-            }
-          }}
+          onChange={handleCategoryOnChange}
+          onKeyDown={handleCategoryOnKeyDown}
         />
         <Description
           maxLength={35}
           placeholder="Add activity..."
           value={activity}
-          onChange={(event) => {
-            const value = event.target.value;
-            setActivity(value);
-          }}
-          onKeyDown={(event) => {
-            if(event.key === "Enter") {
-              event.preventDefault;
-              props.setActivity(activity);
-              props.setCategory(category);
-            }
-          }}
+          onChange={handleDescriptionOnChange}
+          onKeyDown={handleDescriptionOnKeyDown}
         />
         <AddButton
-         
-          onClick={() => {
-            props.setActivity(activity);
-            props.setCategory(category);
-          }}
+          onClick={handleAddButtonOnClick}
         >
           +
         </AddButton>

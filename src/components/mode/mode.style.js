@@ -57,7 +57,3 @@ export const ButtonLabel = styled.label`
   border: none;
   padding: 7.5px;
 `;
-
-export const Wrapper = styled.div`
-
-`;
