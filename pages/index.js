@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 function Index() {
-  /*  */
   const [pomodoro, setPomodoro] = useState(25);
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(15);
@@ -31,7 +30,7 @@ function Index() {
         <InnerWrapper>
           <Title>{activity}</Title>
           <Title category>{category}</Title>
-          <Mode setMode={setMode} />
+          <Mode mode={mode} setMode={setMode} />
           <Clock
             mode={mode}
             volume={volume}
@@ -39,6 +38,7 @@ function Index() {
             pomodoro={pomodoro}
             shortBreak={shortBreak}
             longBreak={longBreak}
+            setMode={setMode}
           />
           <Activity setActivity={setActivity} setCategory={setCategory} />
         </InnerWrapper>
@@ -47,7 +47,7 @@ function Index() {
           <FontAwesomeIcon
             icon={faGear}
             size="2x"
-            style={{background: 'transparent'}}
+            style={{ background: "transparent" }}
           />
         </Button>
         <Setup

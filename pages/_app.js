@@ -1,6 +1,9 @@
+import Head from "next/head";
 import { createGlobalStyle } from "styled-components";
 import scheme from "../public/colors.json";
 import Layout from "../src/components/common/Layout";
+
+/* This file is responsible for */
 
 const GlobalStyle = createGlobalStyle`
       
@@ -43,6 +46,9 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <Layout>
+        <Head>
+          <title>Timer Pomodoro</title>
+        </Head>
         <Component {...pageProps} />
       </Layout>
     </>
