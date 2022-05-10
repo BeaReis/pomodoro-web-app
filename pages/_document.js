@@ -6,7 +6,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="/favicon.svg"/>
+        <link rel="icon" sizes="16x16" href="/favicon.svg"/>
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap"
           rel="stylesheet"
