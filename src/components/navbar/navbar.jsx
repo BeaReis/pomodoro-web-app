@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <>
       <Nav>
-        <Link href={ROUTES.root}>
+        <Link href={"/"}>
           <NavItem logo>TIMER 🍅 POMODORO</NavItem>
         </Link>
         <NavItemContainer>
