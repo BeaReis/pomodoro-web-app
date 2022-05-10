@@ -46,7 +46,7 @@ export const SetupTitle = styled.p`
 
 export const TimeWrapper = styled.div`
   display: grid;
-  column-gap: ${props => props.sound ? '10px' : '50px'};
+  column-gap: ${(props) => (props.sound ? "10px" : "50px")};
   margin: 5px 0 10px 0;
   width: 100%;
 `;
@@ -59,6 +59,13 @@ export const SetupInput = styled.input`
   margin: ${(props) => (props.timeSetup ? "10px 0 0 0" : "0")};
   border-radius: 5px;
   grid-column: 2;
+  ${(props) => {
+      if (props.property === "inactive") {
+        return ` 
+         color: gray;
+      `;
+      }
+    }}
 `;
 
 export const SwitchContainer = styled.div`
@@ -72,13 +79,13 @@ export const SwitchContainer = styled.div`
   grid-column: 2;
   ${(props) => {
     if (props.property === "active") {
-      return`
+      return `
       background-color: ${scheme.colors.primary[300]};
       `;
     } else {
-      return`
+      return `
       background-color: ${scheme.colors.neutrals[100]};
-      `; 
+      `;
     }
   }};
   transition: 300ms all;
@@ -88,7 +95,6 @@ export const SwitchContainer = styled.div`
   ::before {
     content: "";
     transition: 300ms all;
-    
     ${(props) => {
       if (props.property === "active") {
         return ` 
@@ -97,7 +103,7 @@ export const SwitchContainer = styled.div`
           left: 20px;
       `;
       } else {
-        return`
+        return `
           background: grey;
         `;
       }
