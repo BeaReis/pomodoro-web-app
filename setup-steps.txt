@@ -1,5 +1,7 @@
 /******** SETUP STEP BY STEP DOCUMENTATION ********/
 
+/** nextJS **/
+
 1. Setup nextJS -> npm i next react react-dom
 
 2. Add scripts for nextJS -> 
@@ -19,6 +21,8 @@
 
 3. Create files './Pages/' for routes and './Public/' for static files serving
 
+/** styled-components **/
+
 4. Setup styled components -> npm i styled-components
 
 5. Setup babel plugin -> npm i --save-dev babel-plugin-styled-components
@@ -27,3 +31,10 @@
     {
         "plugins": ["babel-plugin-styled-components"]
     }
+
+/** fontawesome **/
+
+7. Setup fontawesome -> npm i @fortawesome/fontawesome-svg-core
+                             @fortawesome/free-regular-svg-icons
+                             @fortawesome/free-solid-svg-icons
+                             @fortawesome/react-fontawesome
