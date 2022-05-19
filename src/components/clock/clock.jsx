@@ -14,7 +14,6 @@ import {
   - Can Play, Pause and Stop */
 
 function Clock(props) {
-  const [activeMode, setActiveMode] = useState("pomodoro");
   const [pomodoro, setPomodoro] = useState({ minutes: 25, seconds: 0 });
   const [short, setShort] = useState({ minutes: 5, seconds: 0 });
   const [long, setLong] = useState({ minutes: 15, seconds: 0 });
@@ -40,6 +39,7 @@ function Clock(props) {
               playSound();
             }
             props.setMode("short");
+            props.setPomodoro(pomodoro);
           }
         } else {
           setSeconds(seconds - 1);
@@ -57,41 +57,23 @@ function Clock(props) {
     // Pause timer when mode is switched
     setActive(false);
 
-    /* Uses 'activeMode' to save last set time for each mode to prevent time from 
-    reseting on mode change. */
-    switch (activeMode) {
-      case "long":
-        setLong({ minutes, seconds });
-        break;
-      case "short":
-        setShort({ minutes, seconds });
-        break;
-      case "pomodoro":
-        setPomodoro({ minutes, seconds });
-        break;
-      default:
-    }
-
     /* Uses props.mode to set minutes and seconds according to current mode. */
     switch (props.mode) {
       case "long":
         setMinutes(long.minutes);
         setSeconds(long.seconds);
-        setActiveMode(props.mode);
         break;
       case "short":
         setMinutes(short.minutes);
         setSeconds(short.seconds);
-        setActiveMode(props.mode);
         break;
       case "pomodoro":
         setMinutes(pomodoro.minutes);
         setSeconds(pomodoro.seconds);
-        setActiveMode(props.mode);
         break;
       default:
     }
-    setActiveMode(props.mode);
+  
   }, [props.mode]);
 
   /*** Whenever settings changes ***/
@@ -129,7 +111,7 @@ function Clock(props) {
     audio.play();
   }
 
-
+  /** Stops the timer (sets minutes and seconds to initial state) **/
   const handleStopButtonOnClick = () => {
     setActive(false);
     switch (props.mode) {
@@ -147,11 +129,13 @@ function Clock(props) {
     setSeconds(0);
   }
 
+  /** Pauses the timer by setting 'active' to false **/
   const handlePauseButtonOnClick = () => {
     // Changes timer active state to false and pauses the countdown.
     setActive(false);
   }
 
+  /** Play **/
   const handlePlayButtonOnClick = () => {
     // Changes timer active state to true and starts the countdown.
     setActive(true);
@@ -167,6 +151,7 @@ function Clock(props) {
       setSeconds(59);
     }
   }
+
 
   return (
     <>
