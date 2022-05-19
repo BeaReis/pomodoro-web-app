@@ -31,6 +31,7 @@ function Setup(props) {
   const minRelay = 2;
   const maxRelay = 8;
 
+  // This function handles input conditions and sets input value to timer
   const handleDurationOnChange = (event) => {
     let value = event.target.value;
     if (value === "") return;
@@ -44,6 +45,7 @@ function Setup(props) {
     }));
   };
 
+  // This function verifies if input is empty when component is out of focus and sets its value to default if true
   const handleDurationOnBlur = (event) => {
     let value = event.target.value;
     if (value === "") {
@@ -58,6 +60,7 @@ function Setup(props) {
     if (value < 1) value = 1;
     if (value > 60) value = 60;
     props.setShortBreak(value);
+    event.target.value = value;
     setSetup((prevState) => ({
       ...prevState,
       short: value,
@@ -78,6 +81,7 @@ function Setup(props) {
     if (value < 1) value = 1;
     if (value > 60) value = 60;
     props.setLongBreak(value);
+    event.target.value = value;
     setSetup((prevState) => ({
       ...prevState,
       long: value,
