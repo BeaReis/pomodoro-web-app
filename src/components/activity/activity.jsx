@@ -28,12 +28,16 @@ function Activity(props) {
       event.preventDefault;
       props.setActivity(activity);
       props.setCategory(category);
+      setActivity("");
+      setCategory("");
     }
   }
 
   const handleAddButtonOnClick = () => {
     props.setActivity(activity);
     props.setCategory(category);
+    setActivity("");
+    setCategory("");
   }
 
   return (
@@ -54,6 +58,7 @@ function Activity(props) {
           onKeyDown={handleDescriptionOnKeyDown}
         />
         <AddButton
+          aria-label="Add category and activity"
           onClick={handleAddButtonOnClick}
         >
           +
