@@ -38,8 +38,6 @@ function Clock(props) {
             if (props.alarmState === true) {
               playSound();
             }
-            props.setMode("short");
-            props.setPomodoro(pomodoro);
           }
         } else {
           setSeconds(seconds - 1);
@@ -147,8 +145,10 @@ function Clock(props) {
         setSeconds(seconds - 1);
       }
     } else {
-      setMinutes(minutes - 1);
-      setSeconds(59);
+      if (minutes > 0) {
+        setMinutes(minutes - 1);
+        setSeconds(59);
+      }
     }
   }
 
