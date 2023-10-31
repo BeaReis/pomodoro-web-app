@@ -158,20 +158,20 @@ function Clock(props) {
       <ClockContainer mode={props.mode}>
         <ClockFrame>
           <TimeFrame>
-            {timerMinutes}
-            <span>:</span>
-            {timerSeconds}
+            {`${timerMinutes}:${timerSeconds}`}
           </TimeFrame>
           <InnerContainer play>
             <StopButton
               onClick={handleStopButtonOnClick}
             />
+            {active ?
             <PauseButton
               onClick={handlePauseButtonOnClick}
             />
+            :
             <PlayButton
               onClick={handlePlayButtonOnClick}
-            />
+            />}
           </InnerContainer>
         </ClockFrame>
       </ClockContainer>

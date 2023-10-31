@@ -3,6 +3,7 @@ import scheme from "../../../public/colors.json";
 
 export const ClockContainer = styled.div`
   display: flex;
+  justify-content: center;
   border: 5px solid;
   box-shadow: 0 0 10px 5px rgb(160 0 0/ 50%);
   ${(props) => {
@@ -37,14 +38,14 @@ export const ClockContainer = styled.div`
 export const ClockFrame = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   background-color: ${scheme.colors.neutrals[100]};
   border-radius: 50%;
   width: 95%;
   height: 95%;
-  margin: auto auto;
   align-items: center;
   padding: 15px;
+  gap: 20px;
 `;
 
 
@@ -52,20 +53,21 @@ export const TimeFrame = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  
+  width: 100%;
   height: 100px;
   @media (max-width: 720px) {
     font-size: 64px;
   }
   font-size: 80px;
-  margin: 20px;
+  
   background-color: transparent;
 `;
 
 export const PlayButton = styled.button`
   box-sizing: border-box;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-width: 20px 0px 20px 35px;
   border-style: solid;
   border-color: transparent ${scheme.colors.neutrals[300]};
@@ -82,10 +84,9 @@ export const PlayButton = styled.button`
 
 export const PauseButton = styled.button`
   box-sizing: border-box;
-  width: 35px;
-  height: 35px;
-  margin-right: 40px;
-  border-width: 0px 25px 0px 0px;
+  width: 40px;
+  height: 40px;
+  border-width: 0px 0px 0px 25px;
   border-style: double;
   border-color: transparent ${scheme.colors.neutrals[300]};
   cursor: pointer;
@@ -100,9 +101,8 @@ export const PauseButton = styled.button`
 `;
 
 export const StopButton = styled.button`
-  width: 35px;
-  height: 35px;
-  margin-right: 30px;
+  width: 36px;
+  height: 36px;
   background-color: ${scheme.colors.neutrals[300]};
   border: none;
   cursor: pointer;
@@ -120,6 +120,7 @@ export const InnerContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 275px;
+  gap: 32px;
+  width: 100%;
   background-color: transparent;
 `;
