@@ -21,6 +21,6 @@ This is a web application of a timer developed to be used with [Pomodoro Techniq
 Improvements:
 - [ ] User accessbility;
 
-### Version 2.0 (Coming Soon)
+### Version 2.0 (Planned features)
 - [ ] User can Sign In with Google or Facebook;
 - [ ] User can access dashboard to see Pomodoro Stats (number of Pomodoro Sessions, hours spent on each Category, Daily, Weekly and Monthly);
